@@ -24,7 +24,7 @@ module.exports = {
     },
 
     book: (_, { id }, { dataSources }) =>
-    dataSources.bookAPI.getBookById({ bookId: id }),
+      dataSources.bookAPI.getBookById({ bookId: id }),
 
     author: (_, { id }, { dataSources }) =>
       dataSources.authorAPI.getAuthorById({ authorId: id }),
@@ -54,4 +54,16 @@ module.exports = {
         dataSources.authorAPI.getAuthorById({ authorId: id }),
   
   },
+
+  Book: {
+    author: async ({id}, _, { dataSources }) =>
+      dataSources.authorAPI.getAuthorById({ authorId: id })
+  },
+
+  Author: {
+    books: async ({books}, _, { dataSources }) =>
+      dataSources.bookAPI.getBookById({ bookId: books }),
+  }
+
+
 };

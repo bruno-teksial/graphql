@@ -13,7 +13,7 @@ const typeDefs = gql`
       after: String
     ): BookConnection!
     book(id: ID!): Book
-
+    
     authors(
       """
       The number of results to show. Must be >= 1. Default = 2
@@ -48,7 +48,7 @@ const typeDefs = gql`
   type Author {
     id: ID!
     author: String!
-    books: String!
+    books: Book!
     about: String
   }
   
@@ -57,7 +57,7 @@ const typeDefs = gql`
     isbn13: String!
     title: String!
     subtitle: String!
-    author: String!
+    author: Author
     link: String
   }
 
