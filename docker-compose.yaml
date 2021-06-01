@@ -1,0 +1,21 @@
+app:
+  build: 
+    context: .
+  ports:
+    - "3000:3000"
+  volumes: 
+    - ./src:/var/www/html
+  env_file:
+    - ./.env
+  networks: 
+    - network
+  restart: always
+
+# graphql-server:
+#   image: node:fermium-alpine3.12
+#   command: -H 0.0.0.0 -p 3000 -w db.json
+#   ports:
+#     - "3000:3000"
+#   volumes:
+#     - .:/data
+#   restart: always
